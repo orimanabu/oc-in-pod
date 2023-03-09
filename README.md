@@ -42,19 +42,19 @@ oc auth can-i --as system:serviceaccount:octest:oc-ops delete pod
 ./image_build.sh
 ```
 
-## コンテナのデプロイ
+## Podのデプロイ
 
 ```
 oc apply -f ubi8oc-deployment.yaml
 ```
 
-## コンテナに入る
+## Podに入る
 
 ```
 oc rsh $(oc get pod -o name)
 ```
 
-## 自Podを削除する
+## Podの中から自Podを削除する
 
 ```
 oc get pod
