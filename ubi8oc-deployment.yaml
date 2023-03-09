@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ubi8oc
+  name: ubi8oc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ubi8oc
+  template:
+    metadata:
+      labels:
+        app: ubi8oc
+    spec:
+      containers:
+      - image: quay.io/manabu.ori/test/ubi8-oc
+        imagePullPolicy: Always
+        name: ubi8oc
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop: ["ALL"]
+          runAsNonRoot: true
+          seccompProfile:
+            type: RuntimeDefault
+      serviceAccountName: oc-ops
+
